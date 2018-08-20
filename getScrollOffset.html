@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>getScrollOffset</title>
+</head>
+<body>
+    <div style='height:2000px;width:2000px'></div>
+    <script>
+        function getScrollOffset() {
+            //IE9及以上有作用
+            if (window.pageXOffset) {
+              return {
+                x: window.pageXOffset,
+                y: window.pageYOffset
+              }
+            } else {
+              //IE8 及以下起作用，
+              //下面这两个值一个有值时另一个为零，所以两个相加可以做到全兼容
+              return {
+                x: document.body.scrollLeft + document.documentElement.scrollLeft,
+                y: document.body.scrollTop + document.documentElement.scrollTop
+              }
+            }
+          }
+        
+</script>
+
+</body>
+</html>

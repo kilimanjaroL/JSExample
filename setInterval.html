@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>10秒倒计时</title>
+</head>
+<body>
+  <div>我在倒计时：
+    <span id='seconds'>10</span>s
+  </div>
+  <button id='timer'>点击我开始10秒倒计时</button>
+  <script>
+    function doJiShi() {
+      var num = 10;
+      time = setInterval(function () {
+        document.getElementById('seconds').innerText = num;
+        num --;
+        if (num == 0) {
+          clearInterval(time);
+        }
+      }, 1000)
+    }
+    var btn = document.getElementById('timer')
+
+    //保证在10s内再次点击按钮时，不会重新即时出错
+    btn.onclick = function addClick() {
+      doJiShi();
+      btn.onclick = null;
+      clearTimeout(timer);
+      var timer = setTimeout(function () {
+        btn.onclick = addClick;
+      }, 10000);
+    }
+  </script>
+</body>
+</html>

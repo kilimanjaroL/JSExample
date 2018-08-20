@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>getViewportOffset</title>
+</head>
+<body>
+  <script>
+    function getViewportOffset() {
+      if (window.innerWidth) {  
+        //IE9及以上
+        return {
+          w: window.innerWidth,
+          h: window.innerHeight
+        }
+      }else{
+        if(document.compatMode === "BackCompat"){
+          //怪异模式
+          return {
+            w : document.body.clientWidth,
+            h : document.body.clientHeight
+          }
+        }else{
+          return {
+            //标准模式
+            w : document.documentElement.clientWidth,
+            h : document.documentElement.clientHeight
+          }
+        }
+      }
+    }
+
+    //<!DOCTYPE html>有这句话的时候是指标准模式，而删除这句话的时候算是怪异模式
+    //怪异模式就是可以后退版本的意思，判断是否是标准模式，可以使用compaMode()
+    //return css1Compat(标准) BackCompat(怪异)
+  </script>
+
+</body>
+</html>
+
+

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>typeJudge</title>
+</head>
+<body>
+<script>
+    //原始值 引用值
+    //区分引用值  数组、对象、包装类（object.protopyte.toString 来判断）
+    //null 无法判断，所以第一个先把这个判断出来
+    function type(target){
+        var ret = typeof(target);
+        var template = {
+            "[object Array]" : "array",   //数组
+            "[object Object]" : "object", //对象
+            "[object Number]" : "number - object",  //数值
+            "[object Boolean]" : 'boolean - object',  //布尔
+            "[object String]" : 'string - object'  //字符串
+        }
+    
+        if(target === null){
+            return "null";
+        }else if(ret == "object"){
+            var str = Object.prototype.toString.call(target);
+            return template[str]; //template即对象
+        }else{
+            return ret;
+        }
+    }
+</script>
+</body>
+</html>

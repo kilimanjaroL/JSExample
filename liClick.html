@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>liClick</title>
+</head>
+<body>
+    <ul>
+        <li>a</li>
+        <li>b</li>
+        <li>c</li>
+        <li>d</li>
+    </ul>
+    <script type="text/javascript">
+        //点击一组li对应返回他们的顺序(即返回自己是第几个li)
+        var li = document.getElementsByTagName('li')
+        for(var i = 0; i < li.length; i ++){
+            (function(i){
+                //绑定事件出现在循环里面，如果使用到循环变量，一定要考虑闭包的问题。解决：立即执行函数！
+            li[i].addEventListener('click',function(){
+                console.log(i)
+            },false)
+        }(i))
+    }
+
+    </script>
+
+</body>
+</html>
